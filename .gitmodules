@@ -1,0 +1,9 @@
+[submodule "repos/primary"]
+	path = repos/primary
+	url = https://gerrit.wikimedia.org/r/schemas/event/primary
+[submodule "repos/secondary"]
+	path = repos/secondary
+	url = https://gerrit.wikimedia.org/r/schemas/event/secondary
+[submodule "mw-config"]
+	path = mw-config
+	url = https://gerrit.wikimedia.org/r/operations/mediawiki-config
