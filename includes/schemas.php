@@ -1,6 +1,7 @@
 <?php
 
-require_once('includes/glob_recursive.php');
+require_once('includes/functions/glob_recursive.php');
+require_once('includes/functions/autolink.php');
 
 $repos = ['secondary', 'primary'];
 
@@ -17,10 +18,12 @@ echo '<table id="event-schemas">
 foreach ( $repos as $repo ) {
   $dir = 'repos/' . $repo . '/jsonschema';
   $paths = glob_recursive("$dir/*/latest.json");
+  sort($paths);
   foreach ( $paths as $path ) {
     $json = file_get_contents( $path );
     $schema = json_decode( $json );
-    echo '<tr id="'.str_replace('/', '-', $schema->{'title'}).'"><td class="schema-repo">'.$repo.'</td><td class="schema-id">'.$schema->{'$id'}.'</td><td class="schema-desc">'.$schema->{'description'}.'</td></tr>';
+    $description = autoLink($schema->{'description'});
+    echo '<tr id="'.str_replace('/', '-', $schema->{'title'}).'"><td class="schema-repo">'.$repo.'</td><td class="schema-id">'.$schema->{'$id'}.'</td><td class="schema-desc">'.$description.'</td></tr>';
   }
 }
 
