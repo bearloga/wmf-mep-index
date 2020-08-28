@@ -22,8 +22,9 @@ foreach ( $repos as $repo ) {
   foreach ( $paths as $path ) {
     $json = file_get_contents( $path );
     $schema = json_decode( $json );
+    $id = $schema->{'$id'};
     $description = autoLink($schema->{'description'});
-    echo '<tr id="'.str_replace('/', '-', $schema->{'title'}).'"><td class="schema-repo">'.$repo.'</td><td class="schema-id">'.$schema->{'$id'}.'</td><td class="schema-desc">'.$description.'</td></tr>';
+    echo '<tr id="'.str_replace('/', '-', $schema->{'title'}).'"><td class="schema-repo">'.$repo.'</td><td class="schema-id"><a href="https://schema.wikimedia.org/repositories/'.$repo.'/jsonschema'.$id.'">'.$id.'</a></td><td class="schema-desc">'.$description.'</td></tr>';
   }
 }
 
