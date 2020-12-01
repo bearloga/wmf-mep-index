@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
   font-size: 12pt;
   margin: 0;
 }
@@ -28,48 +28,62 @@ thead {
 table {
   border-collapse: collapse;
 }
-#event-streams tbody {
+.event-streams > tbody {
   font-family: monospace;
 }
-#event-streams th {
+.event-streams th {
   text-align: left;
   padding: 10px;
 }
-#event-streams td {
+.event-streams td {
   padding: 20px 10px;
   border-bottom: 1px solid black;
 }
+
 tr:nth-child(even) {
   background-color: #F5F5F5;
 }
-#event-streams td:nth-child(odd) {
-  border-right: 1px solid black;
-}
-#event-streams td:nth-child(even) {
-  border-left: 1px solid black;
-}
+/*
+#event-streams td:nth-child(odd) { border-right: 1px solid black; }
+#event-streams td:nth-child(even) { border-left: 1px solid black; }
+*/
 
-#event-schemas th {
+.event-schemas th {
   text-align: left;
   padding: 10px 5px;
 }
-#event-schemas tbody {
+.event-schemas tbody {
   font-size: 10pt;
 }
-#event-schemas tr td:nth-child(1) {
-  width: 100px;
-}
-#event-schemas tr td:nth-child(2) {
-  width: 400px;
+table.event-schemas > tbody > tr > td:nth-child(1) {
+  width: 500px;
   font-family: monospace;
 }
-#event-schemas tr td:nth-child(3) {
+table.event-schemas > tbody > tr > td:nth-child(2) {
   width: 400px;
 }
-#event-schemas td {
+.event-schemas td {
   padding: 10px 5px;
   border-bottom: 1px solid black;
 }
-#event-schemas .schema-id {
+.event-schemas .schema-id {
   font-family: monospace;
+}
+
+#data-dictionary {
+  table-layout: auto;
+}
+#data-dictionary td {
+  padding: 20px 15px;
+}
+.field-name {
+  width: 120px;
+}
+.field-description {
+  width: 700px;
+}
+
+#data-dictionary dl dt {
+  font-family: monospace;
+  font-weight: bold;
 }
