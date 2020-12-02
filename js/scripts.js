@@ -18,7 +18,21 @@ $( document ).ready( function() {
   const list = `<ul id="repo-links"><li>${links.join( '</li><li>' )}</li></ul>`;
   $( '#submodule-status' ).html( list );
 
-  $( "#tabs" ).tabs();
+  // Update URL with name of the tab when it's activated:
+  $( "#tabs" ).tabs({
+    beforeActivate: function( event, ui ) {
+      window.location.hash = ui.newPanel.attr( 'id' );
+    }
+  });
+
+  // Auto-activate the tab that is in the URL, if any:
+  if ( window.location.hash.length > 0 ) {
+    const possibleTabs = [ '#active-streams', '#all-schemas', '#standard-analytics-fields' ];
+    if (possibleTabs.indexOf( window.location.hash ) >= 0 ) {
+      window.scrollTo(0, 0);
+      $('#tabs > ul > li > a[href="' + window.location.hash + '"]').click();
+    }
+  }
 
   $( ".accordion" ).accordion( {
     collapsible: true,
